@@ -9,13 +9,15 @@
 
 <div class = "blogs-content">
     <div class="create-blog content">
-        <form action="/blogs" method = 'POST'>
+        <form action="/blogs" enctype="multipart/form-data" method = 'POST'>
           <label for="title">Blog title:</label>
           <input type="text" id="title" name="title" required>
           <label for="snippet">Blog snippet:</label>
           <input type="text" id="snippet" name="snippet" required>
           <label for="body">Blog body:</label>
           <textarea id="body" name="body" required></textarea>
+          <label for="img">Select image:</label>
+          <input type="file" id="img" name="img" accept="image/*">
           <button>Submit</button>
         </form>
       </div>

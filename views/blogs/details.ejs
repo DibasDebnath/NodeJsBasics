@@ -13,6 +13,10 @@
         <h3 class="title"><%= blog.title %></h3>
         <p class="snippet"><%= blog.snippet %></p>
         <p class="body"><%= blog.body %></p>
+        <img
+            src="data:image/<%=blog.img.contentType%>;base64,
+                    <%=blog.img.data.toString('base64')%>"
+        />
 
         <br/>
 

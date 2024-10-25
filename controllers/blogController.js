@@ -1,6 +1,9 @@
 
 const Blog = require('../models/blog');
-
+const fs = require("fs");
+const path = require("path");
+const multer = require("multer");
+var bodyParser = require("body-parser");
 
 
 const BlogIndex = (req,res) =>{
@@ -59,16 +62,26 @@ const BlogCreateGet = (req,res) =>{
 
 }
 
+
+
 const BlogCreatePost = (req,res) => {
     //console.log(req.body);
 
-    // const blog = new Blog({
-    //     title: req.body.title,
-    //     snippet: req.body.snippet,
-    //     body: req.body.body
-    // });
+    const blog = new Blog({
+      title: req.body.title,
+      snippet: req.body.snippet,
+      body: req.body.body,
+      img: {
+        data: fs.readFileSync(
+          path.join(
+            path.join(__dirname, "../") + "/uploads/" + req.file.filename
+          )
+        ),
+        contentType: "image/png",
+      },
+    });
 
-    const blog = new Blog(req.body);
+    //const blog = new Blog(req.body);
 
     blog.save().then((result)=> {
         //res.send(result);
